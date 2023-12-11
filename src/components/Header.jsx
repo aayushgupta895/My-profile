@@ -1,8 +1,22 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 // import '../style/style.css'
 
 
 function Header({scrollTo}) {
+  // const [screenWidth, setScreenWidth] = React.useState(window.innerWidth);
+    
+    window.addEventListener('resize', function() {
+      // Update the screenWidth variable when the window is resized
+      const screenWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+      if(screenWidth > 1515){
+        var navbarNavElement = document.getElementById('navbarNav');
+        navbarNavElement.classList.remove('d-none');
+        navbarNavElement.classList.add('d-block');
+      }
+      // Log the updated width to the console
+      console.log("Screen Width (after resize): " + screenWidth);
+  });  
+  
   function toggleNav(){
     var navbarNavElement = document.getElementById('navbarNav');
     console.log('idhar');
@@ -33,7 +47,7 @@ function Header({scrollTo}) {
                     <i className="bi bi-list"></i>
                 </a>
             </div>
-            <div id="navbarNav" className="navcol d-none">
+            <div id="navbarNav" className="navcol d-block">
                 <ul>
                     <li><a href="#"><i className="bi bi-house-door fs-5 me-2"></i> Home</a></li>
                     <li><a href="#about"><i className="bi fs-5 bi-info-square me-2"></i> About</a></li>
